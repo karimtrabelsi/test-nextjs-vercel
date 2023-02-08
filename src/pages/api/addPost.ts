@@ -1,6 +1,7 @@
 import { PrismaClient } from "@prisma/client";
+import { NextApiRequest, NextApiResponse } from "next";
 
-async function addPost(req: any, res: any) {
+async function addPost(req: NextApiRequest, res: NextApiResponse) {
   const prisma = new PrismaClient();
   const { title, body } = req.body;
   const post = await prisma.post.create({
