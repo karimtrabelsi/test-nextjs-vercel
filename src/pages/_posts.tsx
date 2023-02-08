@@ -42,7 +42,9 @@ export default function Posts() {
     const [posts, setPosts] = useState<any>([]);
     useEffect(() => {
       const getPosts = async () => {
-        const response = await fetch("http://localhost:3000/api/getPosts");
+        const response = await fetch(
+          "https://test-nextjs-vercel-pied.vercel.app/api/getPosts"
+        );
         const result = await response.json();
         setPosts(result);
       };
@@ -67,13 +69,16 @@ export default function Posts() {
       title: title,
       body: body,
     };
-    const response = await fetch("http://localhost:3000/api/addPost", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    });
+    const response = await fetch(
+      "https://test-nextjs-vercel-pied.vercel.app/api/addPost",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      }
+    );
     const result = await response.json();
     console.log(result);
   }
